@@ -1,12 +1,19 @@
-import React, {Component} from 'react';
-import {Banner, Teams, Content} from "./components";
+import React, {Component}                      from 'react';
+import {Banner, Teams, Content, MemberPreview} from "./components";
 
-class President extends Component{
+class President extends Component {
     render() {
         return (
             <div className="template">
                 <Banner/>
-                <Teams/>
+                {
+                    this.props.users.length > 0
+                        ? <Teams {...this.props}/>
+                        : ''
+                }
+                <MemberPreview
+                    {...this.props}
+                />
                 <Content/>
             </div>
         );

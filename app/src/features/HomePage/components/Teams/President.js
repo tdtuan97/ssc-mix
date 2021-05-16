@@ -13,8 +13,8 @@ class President extends Component {
                         <div className="ant-row block-wrapper">
                             {this.props.users.map((user, i) => {
                                 return (
-                                    <div className="ant-col block ant-col-xs-24 ant-col-md-8">
-                                        <Member key={i} user={user}/>
+                                    <div key={i} className="ant-col block ant-col-xs-24 ant-col-md-8">
+                                        <Member user={user} handlePreview={this.props.handlePreview}/>
                                     </div>
                                 )
                             })}

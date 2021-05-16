@@ -1,8 +1,3 @@
-const API_URL = 'http://localhost:3000/'
-const NODE_ENV = process.env.NODE_ENV;
-
-function getClientEnvironment() {
-    return NODE_ENV;
-}
-
-module.exports = getClientEnvironment;
+module.exports = {
+    API_URL: 'http://127.0.0.1/api/v1/'
+};

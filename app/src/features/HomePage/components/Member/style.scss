@@ -1,6 +1,7 @@
-.member{
-    .member-image{
-        img{
+.member {
+    .member-image {
+        cursor: pointer;
+        img {
             width: 100%;
             background-size: cover;
             background-attachment: fixed;
@@ -8,22 +9,34 @@
         }
     }
 
-    .member-description-wrapper{
+    .member-description-wrapper {
         padding-left: $distanceComponent;
 
-        .member-username{
-            a{
-                font-size: $fontSizeDefault;
-                color: #000;
-                text-transform: uppercase;
-            }
-            margin-bottom: $distanceComponent;
+        button {
+            padding: unset;
         }
-        .member-title{
+
+        .member-username {
+            font-size: 18px;
+            color: #000;
+            text-transform: uppercase;
+            padding: unset;
+
+            &:hover {
+                color: $colorPrimarySlowLight;
+                text-decoration-line: underline;
+            }
+
+            margin-bottom: 2px;
+        }
+
+        .member-title {
             font-size: $fontSizeSmall;
             color: $colorGray;
+            margin-bottom: 4px;
         }
-        .member-description{
+
+        .member-description {
             font-size: $fontSizeSmall;
             color: $colorGray;
         }

@@ -14,6 +14,9 @@ class Routes extends Component {
                 <PublicRoute path="/users" layout='App'>
                     <UserList/>
                 </PublicRoute>
+                <PublicRoute path="/users/:username" layout='App'>
+                    <UserList/>
+                </PublicRoute>
             </Switch>
         );
     }

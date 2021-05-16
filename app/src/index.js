@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.scss';
 import store from "./common/store";
 import history from './common/history'
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from "connected-react-router";
-import Routes from "./routes"
+import Routes from "./routes";
+import './styles/index.scss';
 
 ReactDOM.render(
     <React.StrictMode>

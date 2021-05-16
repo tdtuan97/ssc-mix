@@ -1,0 +1,36 @@
+.preview-member-wrapper {
+    .member-detail-wrapper {
+        .member-image {
+            width: 150px;
+            margin: auto auto $distanceComponent;
+
+            img {
+                width: 100%;
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+            }
+        }
+
+        .member-detail-content {
+            .member-detail {
+                padding: 0 115px;
+                margin-top: $distanceComponent;
+                font-weight: bold;
+
+                .title {
+                    color: $colorGray;
+                }
+
+                .value {
+                    float: right;
+                }
+
+                &:first-child {
+                    padding-top: $distanceComponent;
+                    border-top: 1px solid $colorGray;
+                }
+            }
+        }
+    }
+}
