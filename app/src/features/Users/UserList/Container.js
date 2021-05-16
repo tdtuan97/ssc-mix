@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import President          from './President';
-import {connect}          from 'react-redux';
+import President from './President';
+import {connect} from 'react-redux';
 
 class Container extends Component {
     render() {

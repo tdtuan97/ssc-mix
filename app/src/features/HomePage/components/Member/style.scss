@@ -1,0 +1,31 @@
+.member{
+    .member-image{
+        img{
+            width: 100%;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    }
+
+    .member-description-wrapper{
+        padding-left: $distanceComponent;
+
+        .member-username{
+            a{
+                font-size: $fontSizeDefault;
+                color: #000;
+                text-transform: uppercase;
+            }
+            margin-bottom: $distanceComponent;
+        }
+        .member-title{
+            font-size: $fontSizeSmall;
+            color: $colorGray;
+        }
+        .member-description{
+            font-size: $fontSizeSmall;
+            color: $colorGray;
+        }
+    }
+}

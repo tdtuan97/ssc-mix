@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware, compose} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 import {routerMiddleware} from "connected-react-router";
 import history from "./history";
@@ -9,23 +9,21 @@ const middlewares = [thunk, router];
 
 /* istanbul ignore if  */
 
-/*if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
     const {createLogger} = require("redux-logger");
 
     const logger = createLogger({collapsed: true});
     middlewares.push(logger);
-}*/
+}
 
 function configureStore(initialState) {
-    const store = createStore(
+    return createStore(
         rootReducer,
         initialState,
         compose(
             applyMiddleware(...middlewares),
         )
     );
-
-    return store;
 }
 
 export default configureStore();

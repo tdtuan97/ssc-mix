@@ -1,6 +1,4 @@
-@import "../../styles/mixins";
-
-$colorHeader: $colorWhite;
+$colorHeader: #1d3a48d1;
 .header {
     background: $colorHeader;
     min-width: 100%;
@@ -49,7 +47,7 @@ $colorHeader: $colorWhite;
 
                     a {
                         text-decoration: none;
-                        color: $colorPrimary;
+                        color: $colorWhite;
 
                         &:hover {
                             color: $colorPrimaryHighLight;

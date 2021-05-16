@@ -6,19 +6,13 @@ import history from './common/history'
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from "connected-react-router";
-import {Switch, Route} from "react-router-dom";
-
-import {HomePage} from "./features/HomePage";
+import Routes from "./routes"
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                <Switch>
-                    <Route path="/">
-                        <HomePage/>
-                    </Route>
-                </Switch>
+                <Routes/>
             </ConnectedRouter>
         </Provider>
     </React.StrictMode>,

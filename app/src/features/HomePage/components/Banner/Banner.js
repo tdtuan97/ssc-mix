@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Button} from "antd";
-import banner_background from '../../images/banner_background.jpg'
-import banner_title from '../../images/banner_title.png'
+import banner_background from '../../../../images/home/banner_background_2.jpg'
+import banner_title from "../../../../images/home/banner_title.png"
 
 class Banner extends Component {
     render() {

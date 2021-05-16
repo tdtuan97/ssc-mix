@@ -1,0 +1,11 @@
+.user-app{
+    height: 100vh;
+    background-image: url("../../images/background_image.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+    .user-app-content{
+        @import "UserList/style";
+    }
+}

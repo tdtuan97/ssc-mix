@@ -1,5 +1,9 @@
 // index is the entry for all styles.
-@import './variables';
-@import './mixins';
-@import './global';
-@import './antd.css';
+@import 'variables';
+@import 'mixins';
+@import 'global';
+@import 'antd.css';
+
+@import "../layouts/style";
+@import "../features/HomePage/style";
+@import "../features/Users/style";
