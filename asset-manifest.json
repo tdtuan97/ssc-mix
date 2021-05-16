@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/ssc-mix/static/css/main.5ff519ba.chunk.css",
-    "main.js": "/ssc-mix/static/js/main.401cc0eb.chunk.js",
-    "main.js.map": "/ssc-mix/static/js/main.401cc0eb.chunk.js.map",
+    "main.css": "/ssc-mix/static/css/main.af71ddb6.chunk.css",
+    "main.js": "/ssc-mix/static/js/main.6865fd6f.chunk.js",
+    "main.js.map": "/ssc-mix/static/js/main.6865fd6f.chunk.js.map",
     "runtime-main.js": "/ssc-mix/static/js/runtime-main.e7b6a767.js",
     "runtime-main.js.map": "/ssc-mix/static/js/runtime-main.e7b6a767.js.map",
-    "static/js/2.1d7cfdcb.chunk.js": "/ssc-mix/static/js/2.1d7cfdcb.chunk.js",
-    "static/js/2.1d7cfdcb.chunk.js.map": "/ssc-mix/static/js/2.1d7cfdcb.chunk.js.map",
+    "static/js/2.82f8dd2a.chunk.js": "/ssc-mix/static/js/2.82f8dd2a.chunk.js",
+    "static/js/2.82f8dd2a.chunk.js.map": "/ssc-mix/static/js/2.82f8dd2a.chunk.js.map",
     "index.html": "/ssc-mix/index.html",
-    "static/css/main.5ff519ba.chunk.css.map": "/ssc-mix/static/css/main.5ff519ba.chunk.css.map",
-    "static/js/2.1d7cfdcb.chunk.js.LICENSE.txt": "/ssc-mix/static/js/2.1d7cfdcb.chunk.js.LICENSE.txt",
-    "static/media/banner_background.13e48aa3.jpg": "/ssc-mix/static/media/banner_background.13e48aa3.jpg",
+    "static/css/main.af71ddb6.chunk.css.map": "/ssc-mix/static/css/main.af71ddb6.chunk.css.map",
+    "static/js/2.82f8dd2a.chunk.js.LICENSE.txt": "/ssc-mix/static/js/2.82f8dd2a.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/ssc-mix/static/media/background_image.9fd752b0.jpg",
+    "static/media/banner_background_2.9fd752b0.jpg": "/ssc-mix/static/media/banner_background_2.9fd752b0.jpg",
     "static/media/banner_title.d943bd68.png": "/ssc-mix/static/media/banner_title.d943bd68.png",
-    "static/media/logo.0fffdae2.png": "/ssc-mix/static/media/logo.0fffdae2.png"
+    "static/media/content.708970ca.svg": "/ssc-mix/static/media/content.708970ca.svg",
+    "static/media/logo.0fffdae2.png": "/ssc-mix/static/media/logo.0fffdae2.png",
+    "static/media/user.1f2b6f5f.png": "/ssc-mix/static/media/user.1f2b6f5f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e7b6a767.js",
-    "static/js/2.1d7cfdcb.chunk.js",
-    "static/css/main.5ff519ba.chunk.css",
-    "static/js/main.401cc0eb.chunk.js"
+    "static/js/2.82f8dd2a.chunk.js",
+    "static/css/main.af71ddb6.chunk.css",
+    "static/js/main.6865fd6f.chunk.js"
   ]
 }
