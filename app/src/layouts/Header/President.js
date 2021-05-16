@@ -7,8 +7,9 @@ class President extends Component {
         let pathName          = this.props.router.location.pathname
         const classItem       = "menu-item";
         const classItemActive = "menu-item active";
+        const classHeader = this.props.isTransparent === true ? "header transparent" : "header";
         return (
-            <header className="header">
+            <header className={classHeader}>
                 <div className="header-content">
                     <div className="header-logo">
                         <Logo/>
@@ -18,12 +19,9 @@ class President extends Component {
                             <li className={pathName === "/" ? classItemActive : classItem}>
                                 <Link to="/">Home</Link>
                             </li>
-                            <li className={pathName === "/users" ? classItemActive : classItem}>
-                                <Link to="/users">Users</Link>
+                            <li className={pathName === "/products" ? classItemActive : classItem}>
+                                <Link to="/products">Products</Link>
                             </li>
-                            {/*<li className={pathName === "/orders" ? classItemActive : classItem}>
-                                <Link to="/orders">Orders</Link>
-                            </li>*/}
                         </ul>
                     </div>
                     <div className="header-menu auth-menu">

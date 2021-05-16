@@ -4,7 +4,7 @@ import {Banner, Teams, Content, MemberPreview} from "./components";
 class President extends Component {
     render() {
         return (
-            <div className="template">
+            <div className="feature-home">
                 <Banner/>
                 {
                     this.props.users.length > 0

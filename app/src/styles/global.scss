@@ -8,13 +8,12 @@ body {
 }
 
 a {
-    color: rgba(255, 255, 255, 0.65);;
     text-decoration: none;
     background-color: initial;
 
     &:hover {
         color: #0056b3;
-        text-decoration: underline;
+        text-decoration: none;
     }
 }
 

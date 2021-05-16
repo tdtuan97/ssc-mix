@@ -1,2 +1,1 @@
-import Example from './Container';
-export default Example ;
+export {default as PrivateRoute} from './Container';

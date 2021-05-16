@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import {Route} from "react-router-dom";
-import {App} from "../../layouts/App";
+import {Route}            from "react-router-dom";
+import {App}              from "../../layouts/App";
+import {Auth}             from "../../layouts/Auth";
 
 class Container extends Component {
     render() {
         let component = null;
         switch (this.props.layout) {
             case 'App':
-                component =  <App>{this.props.children}</App>
+                component = <App>{this.props.children}</App>
+                break;
+            case 'Auth':
+                component = <Auth>{this.props.children}</Auth>
                 break;
             default:
                 break;

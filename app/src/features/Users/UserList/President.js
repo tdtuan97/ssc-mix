@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import UserApp            from "../UserApp";
-
-import './style.scss';
 
 class President extends Component {
     render() {
         return (
-            <UserApp/>
+            <div className="feature-home">
+
+            </div>
         )
     }
 }

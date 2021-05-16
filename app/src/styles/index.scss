@@ -4,7 +4,14 @@
 @import 'global';
 @import 'antd.css';
 
+// Layout
 @import "../layouts/style";
+
+// Auth
+@import "../features/Login/style";
+@import "../features/Register/style";
+
+// App
 @import "../features/HomePage/style";
 @import "../features/HomePage/components/MemberPreview/style";
 @import "../features/Users/style";

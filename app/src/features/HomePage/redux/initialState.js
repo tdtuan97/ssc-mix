@@ -7,7 +7,50 @@
 // NOTE: initialState constant is necessary so that Rekit could auto add initial state when creating async actions.
 
 const initialState = {
-    users: [],
+    users: [
+        {
+            "id": "70712153081c4620a8e9",
+            "username": "trantuan",
+            "full_name": "Tran Dinh Tuan",
+            "balance": "0 VND",
+            "created_at": "2021-05-08T01:52:18+00:00"
+        },
+        {
+            "id": "70712153081c4620a8e9",
+            "username": "trantuan",
+            "full_name": "Tran Dinh Tuan",
+            "balance": "0 VND",
+            "created_at": "2021-05-08T01:52:18+00:00"
+        },
+        {
+            "id": "70712153081c4620a8e9",
+            "username": "trantuan",
+            "full_name": "Tran Dinh Tuan",
+            "balance": "0 VND",
+            "created_at": "2021-05-08T01:52:18+00:00"
+        },
+        {
+            "id": "70712153081c4620a8e9",
+            "username": "trantuan",
+            "full_name": "Tran Dinh Tuan",
+            "balance": "0 VND",
+            "created_at": "2021-05-08T01:52:18+00:00"
+        },
+        {
+            "id": "70712153081c4620a8e9",
+            "username": "trantuan",
+            "full_name": "Tran Dinh Tuan",
+            "balance": "0 VND",
+            "created_at": "2021-05-08T01:52:18+00:00"
+        },
+        {
+            "id": "70712153081c4620a8e9",
+            "username": "trantuan",
+            "full_name": "Tran Dinh Tuan",
+            "balance": "0 VND",
+            "created_at": "2021-05-08T01:52:18+00:00"
+        }
+    ],
     preview: false,
     previewUser: null
 };

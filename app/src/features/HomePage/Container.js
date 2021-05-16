@@ -34,51 +34,6 @@ class Container extends Component {
     componentDidMount() {
         this.props.fetchUser();
     }
-
-    clone() {
-        return [
-            {
-                "username": "trantuan",
-                "full_name": "Tran Tuan",
-                "title": "公司+职位 信息暂缺",
-                "description": "语雀是一款优雅高效的在线文档编辑与协同工具。",
-            },
-            {
-                "username": "trantuan",
-                "full_name": "Tran Tuan",
-                "title": "公司+职位 信息暂缺",
-                "description": "语雀是一款优雅高效的在线文档编辑与协同工具。",
-            }
-            ,
-            {
-                "username": "trantuan",
-                "full_name": "Tran Tuan",
-                "title": "公司+职位 信息暂缺",
-                "description": "语雀是一款优雅高效的在线文档编辑与协同工具。",
-            }
-            ,
-            {
-                "username": "trantuan",
-                "full_name": "Tran Tuan",
-                "title": "公司+职位 信息暂缺",
-                "description": "语雀是一款优雅高效的在线文档编辑与协同工具。",
-            }
-            ,
-            {
-                "username": "trantuan",
-                "full_name": "Tran Tuan",
-                "title": "公司+职位 信息暂缺",
-                "description": "语雀是一款优雅高效的在线文档编辑与协同工具。",
-            }
-            ,
-            {
-                "username": "trantuan",
-                "full_name": "Tran Tuan",
-                "title": "公司+职位 信息暂缺",
-                "description": "语雀是一款优雅高效的在线文档编辑与协同工具。",
-            }
-        ]
-    }
 }
 
 function mapDispatchToProps(dispatch) {
