@@ -11,6 +11,7 @@ class MemberPreview extends Component {
                    visible={props.preview}
                    onOk={(e => props.handleOk(e))}
                    onCancel={(e => props.handleCancel(e))}
+                   footer={null}
             >
                 <div className="preview-member-wrapper">
                     {props.userPreview === null
