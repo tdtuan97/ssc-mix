@@ -1,12 +1,20 @@
-import {get} from "../../../common/crud"
+import axios                                         from "axios";
 import {FETCH_USERS, FIND_BY_USERNAME, PREVIEW_USER} from "./constants";
 
-const env = require("../../../config/env");
+let env = require("../../../config/env");
 
 export function fetchUser() {
     let url = env.API_URL + 'users';
     return dispatch => {
-        return get(dispatch, url, {}, fetchUserAction)
+        return axios.get(url, {})
+            .then(response => {
+                dispatch(fetchUserAction(response.data))
+            }).catch(error => {
+                // Server not response
+                console.log(error)
+            }).finally(() => {
+
+            });
     }
 }
 
@@ -20,7 +28,15 @@ export function fetchUserAction(data) {
 export function findByUsername(username) {
     let url = env.API_URL + 'users/username/' + username;
     return dispatch => {
-        return get(dispatch, url, {}, findByUsernameAction)
+        return axios.get(url, {})
+            .then(response => {
+                dispatch(findByUsernameAction(response.data))
+            }).catch(error => {
+                // Server not response
+                console.log(error)
+            }).finally(() => {
+
+            });
     }
 }
 

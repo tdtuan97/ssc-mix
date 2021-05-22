@@ -6,14 +6,8 @@ class President extends Component {
         return (
             <div className="feature-home">
                 <Banner/>
-                {
-                    this.props.users.length > 0
-                        ? <Teams {...this.props}/>
-                        : ''
-                }
-                <MemberPreview
-                    {...this.props}
-                />
+                <Teams {...this.props}/>
+                <MemberPreview{...this.props}/>
                 <Content/>
             </div>
         );

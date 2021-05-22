@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import President          from './President';
-import {connect}          from 'react-redux';
 
 class Container extends Component {
     render() {
@@ -8,10 +7,4 @@ class Container extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        router: state.router
-    }
-}
-
-export default connect(mapStateToProps, {})(Container)
+export default Container

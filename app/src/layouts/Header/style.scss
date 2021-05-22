@@ -63,6 +63,25 @@ $colorHeader: #1d3a48d1;
 
         .auth-menu {
             float: right;
+            .menu-content{
+                display: inline-block;
+                line-height: 64px;
+                height: 60px;
+                text-decoration: none;
+                color: $colorWhite;
+                font-weight: bolder;
+
+                &:hover {
+                    color: $colorPrimaryHighLight;
+                }
+
+                .avatar{
+                    margin-right: 4px;
+                }
+                .full-name{
+                    line-height: 32px;
+                }
+            }
         }
     }
 }

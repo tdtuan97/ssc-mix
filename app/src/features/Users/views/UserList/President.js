@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class President extends Component {
     render() {
         return (
-            <div className="feature-home">
+            <div className="feature-user">
 
             </div>
         )

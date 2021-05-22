@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {Route}            from "react-router-dom";
-import {App}              from "../../layouts/App";
-import {Auth}             from "../../layouts/Auth";
+import {Route} from "react-router-dom";
+import {App} from "../../layouts/App";
+import {Auth} from "../../layouts/Auth";
+import {connect} from "react-redux";
 
 class Container extends Component {
+
     render() {
         let component = null;
         switch (this.props.layout) {
@@ -23,4 +25,11 @@ class Container extends Component {
     }
 }
 
-export default Container;
+
+function mapStateToProps(state) {
+    return {
+        crud: state.crud,
+    }
+}
+
+export default connect(mapStateToProps, {})(Container)

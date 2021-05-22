@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Member}           from "../Member";
+import {Member} from "../Member";
+import {Loading} from "../../../../layouts/Loading";
 
 class President extends Component {
     render() {
@@ -11,13 +12,16 @@ class President extends Component {
                     </div>
                     <div className="member-wrapper">
                         <div className="ant-row block-wrapper">
-                            {this.props.users.map((user, i) => {
-                                return (
-                                    <div key={i} className="ant-col block ant-col-xs-24 ant-col-md-8">
-                                        <Member user={user} handlePreview={this.props.handlePreview}/>
-                                    </div>
-                                )
-                            })}
+                            {this.props.users.length > 0 ?
+                                this.props.users.map((user, i) => {
+                                    return (
+                                        <div key={i} className="ant-col block ant-col-xs-24 ant-col-md-8">
+                                            <Member user={user} handlePreview={this.props.handlePreview}/>
+                                        </div>
+                                    )
+                                })
+                                : <Loading/>
+                            }
                         </div>
                     </div>
                 </div>

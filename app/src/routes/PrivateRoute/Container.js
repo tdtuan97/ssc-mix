@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
-import {App}              from "../../layouts/App";
-import {Route}            from "react-router-dom";
+import {App} from "../../layouts/App";
+import {Redirect, Route} from "react-router-dom";
+import {connect} from "react-redux";
 
-class Container extends Component{
+class Container extends Component {
     render() {
+        const id = this.props.auth.id;
+        if (id === null || id === undefined) {
+            return (
+                <Redirect to="/login"/>
+            )
+        }
+
         let component = null;
         switch (this.props.layout) {
             case 'App':
-                component =  <App>{this.props.children}</App>
+                component = <App>{this.props.children}</App>
                 break;
             default:
                 break;
@@ -19,4 +27,11 @@ class Container extends Component{
     }
 }
 
-export default Container;
+function mapStateToProps(state) {
+    return {
+        auth: state.auth,
+        crud: state.crud,
+    }
+}
+
+export default connect(mapStateToProps, {})(Container)

@@ -1,1 +1,1 @@
-export {default as UserList} from './UserList'
+export {UserList} from './views/UserList'
