@@ -27,6 +27,7 @@ function loadStateFromLocal() {
             username: payload.username,
             full_name: payload.full_name,
             token: payload.token,
+            role: payload.role,
             message: null,
         }
     } catch (e) {
@@ -36,6 +37,7 @@ function loadStateFromLocal() {
             username: null,
             full_name: null,
             token: null,
+            role: null,
             message: null,
         }
     }

@@ -5,10 +5,23 @@ import {connect} from "react-redux";
 
 class Container extends Component {
     render() {
-        const id = this.props.auth.id;
+        const auth = this.props.auth;
+        const id   = auth.id;
+        const role = auth.role;
+
+        // Check auth
         if (id === null || id === undefined) {
             return (
                 <Redirect to="/login"/>
+            )
+        }
+
+        // Check rule
+        const roles = this.props.roles
+        const notAllow = (typeof roles) === "object" && roles.indexOf(role) === -1;
+        if (notAllow){
+            return (
+                <Redirect to="/errors/403"/>
             )
         }
 

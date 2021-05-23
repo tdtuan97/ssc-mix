@@ -7,11 +7,7 @@
 // NOTE: initialState constant is necessary so that Rekit could auto add initial state when creating async actions.
 
 const initialState = {
-    id: null,
-    username: null,
-    full_name: null,
-    token: null,
-    role: null,
+    example: null
 };
 
 export default initialState;

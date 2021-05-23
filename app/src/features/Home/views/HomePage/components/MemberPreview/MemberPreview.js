@@ -30,13 +30,8 @@ class MemberPreview extends Component {
                                                     </Link>
                                                 </div>,
                                                 <div onClick={() => props.handleCancel()}>
-                                                    <Link key="pay-in" to={'users/' + props.userPreview.username}>
+                                                    <Link key="pay-in" to="transactions/create">
                                                         <CreditCardOutlined/> Pay in
-                                                    </Link>
-                                                </div>,
-                                                <div onClick={() => props.handleCancel()}>
-                                                    <Link key="order" to={'users/' + props.userPreview.username}>
-                                                        <ShoppingCartOutlined/> Order
                                                     </Link>
                                                 </div>,
                                             ]}
