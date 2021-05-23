@@ -8,6 +8,8 @@ export const CODE_SERVER_ERROR    = 500;
 export const CODE_SUCCESS         = 200;
 export const CODE_UNAUTHENTICATED = 401;
 
+export const MESSAGE_SERVER_ERROR = "Server error";
+
 export function reset() {
     return dispatch => {
         dispatch(resetAction())
@@ -28,18 +30,18 @@ export function pendingAction() {
     };
 }
 
-export function get(dispatch, url = '', data = {}, callback = null) {
+export function get(dispatch, url = '', data = {}, config = {}, callback = null) {
     dispatch(pendingAction())
-    return axios.get(url, data).then(response => {
+    return axios.get(url, config).then(response => {
         resolve(dispatch, response, callback)
     }).catch(reason => {
         reject(dispatch, reason, callback)
     });
 }
 
-export function post(dispatch, url = '', data = {}, callback = null) {
+export function post(dispatch, url = '', data = {}, config = {}, callback = null) {
     dispatch(pendingAction())
-    return axios.post(url, data).then(response => {
+    return axios.post(url, data, config).then(response => {
         resolve(dispatch, response, callback)
     }).catch(reason => {
         reject(dispatch, reason, callback)
@@ -54,12 +56,32 @@ export function resolve(dispatch, response, callback) {
 }
 
 export function reject(dispatch, reason, callback) {
-    const response = reason.response
+
+    const data     = {
+        data: null,
+        code: null,
+        message: MESSAGE_SERVER_ERROR,
+        errors: [],
+        status: CODE_SERVER_ERROR,
+        statusText: MESSAGE_SERVER_ERROR,
+    };
+    const response = {
+        data: {
+            ...data
+        },
+        ...reason.response
+    }
+
+    console.log(response)
     dispatch(responseAction(response))
+
+    // Need callback function
     if (typeof callback === "function") {
         dispatch(callback(response.data))
     }
-    if (response.status === CODE_UNAUTHENTICATED || response.code === CODE_UNAUTHENTICATED){
+
+    // For case auth
+    if (response.status === CODE_UNAUTHENTICATED || response.code === CODE_UNAUTHENTICATED) {
         dispatch(clearToken())
     }
 }

@@ -1,1 +1,1 @@
-export {UserList} from './views/UserList'
+export {UserDetail} from './views/UserDetail'

@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    position: relative;
 
     .antd-pro-layouts-user-layout-content {
         padding: 32px 0 24px;

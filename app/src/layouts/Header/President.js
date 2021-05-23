@@ -27,46 +27,46 @@ class President extends Component {
                             <li className={pathName === "/" ? classItemActive : classItem}>
                                 <Link to="/">Home</Link>
                             </li>
-                            <li className={pathName === "/products" ? classItemActive : classItem}>
-                                <Link to="/products">Products</Link>
+                            <li className={pathName === "/contact" ? classItemActive : classItem}>
+                                <Link to="/contact">Contact</Link>
                             </li>
-                            {
-                                authenticated ?
-                                    <li className={pathName === "/users" ? classItemActive : classItem}>
-                                        <Link to="/users">Users</Link>
-                                    </li> : null
-                            }
-
+                            <li className={pathName === "/about" ? classItemActive : classItem}>
+                                <Link to="/about">About</Link>
+                            </li>
                         </ul>
                     </div>
 
-                    {authenticated ?
-                        <div className="header-menu auth-menu">
-                            <Dropdown className="menu-content" overlay={
-                                <Menu>
-                                    <Menu.Item onClick={() => {
-                                        this.props.handleLogout()
-                                    }}>Logout</Menu.Item>
-                                </Menu>
-                            }>
-                                <Link to='#'>
-                                    <Avatar className="avatar" src={img_user}/>
-                                    <span className="full-name">{auth.full_name}</span>
-                                </Link>
-                            </Dropdown>
-                        </div>
-                        :
-                        <div className="header-menu auth-menu">
-                            <ul className="menu-content">
-                                <li className="menu-item">
-                                    <Link to='/login'>Login</Link>
-                                </li>
-                                <li className="menu-item">
-                                    <Link to="/register">Register</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    }
+                    <div className="header-menu auth-menu">
+                        {
+                            authenticated ?
+                                (
+                                    <Dropdown className="menu-content" overlay={
+                                        <Menu>
+                                            <Menu.Item onClick={() => {
+                                                this.props.handleLogout()
+                                            }}>
+                                                Logout
+                                            </Menu.Item>
+                                        </Menu>
+                                    }>
+                                        <Link to='#'>
+                                            <Avatar className="avatar" src={img_user}/>
+                                            <span className="full-name">{auth.full_name}</span>
+                                        </Link>
+                                    </Dropdown>
+                                )
+                                :
+                                <ul className="menu-content">
+                                    <li className="menu-item">
+                                        <Link to='/login'>Login</Link>
+                                    </li>
+                                    <li className="menu-item">
+                                        <Link to="/register">Register</Link>
+                                    </li>
+                                </ul>
+                        }
+                    </div>
+
                 </div>
             </header>
         )

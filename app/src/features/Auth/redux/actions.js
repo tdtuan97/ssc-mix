@@ -13,7 +13,7 @@ const env = require('../../../config/env')
 export function login(data) {
     const url = env.API_URL + 'auth/get-token'
     return dispatch => {
-        return post(dispatch, url, data, setTokenAction)
+        return post(dispatch, url, data, {}, setTokenAction)
     }
 }
 
@@ -44,6 +44,6 @@ export function clearTokenAction() {
 export function register(data) {
     const url = env.API_URL + 'users/insert'
     return dispatch => {
-        return post(dispatch, url, data)
+        return post(dispatch, url, data, {})
     }
 }

@@ -1,61 +1,80 @@
-import axios                                         from "axios";
-import {FETCH_USERS, FIND_BY_USERNAME, PREVIEW_USER} from "./constants";
+import {get, post} from "../../../common/crud"
+import {
+    FETCH_USER_GENERAL_ACTION,
+    FETCH_USER_TRANSACTIONS_ACTION,
+    FETCH_USER_ORDERS_ACTION,
+    PENDING_FETCH_USER_GENERAL_ACTION,
+    PENDING_FETCH_USER_TRANSACTIONS_ACTION,
+    PENDING_FETCH_USER_ORDERS_ACTION,
+} from "./constants";
 
 let env = require("../../../config/env");
 
-export function fetchUser() {
-    let url = env.API_URL + 'users';
-    return dispatch => {
-        return axios.get(url, {})
-            .then(response => {
-                dispatch(fetchUserAction(response.data))
-            }).catch(error => {
-                // Server not response
-                console.log(error)
-            }).finally(() => {
-
-            });
-    }
-}
-
-export function fetchUserAction(data) {
-    return {
-        type: FETCH_USERS,
-        payload: data
-    };
-}
-
-export function findByUsername(username) {
+// ========================== User general ==========================
+export function fetchUserGeneral(username) {
     let url = env.API_URL + 'users/username/' + username;
     return dispatch => {
-        return axios.get(url, {})
-            .then(response => {
-                dispatch(findByUsernameAction(response.data))
-            }).catch(error => {
-                // Server not response
-                console.log(error)
-            }).finally(() => {
-
-            });
+        dispatch(pendingFetchUserGeneralAction())
+        return get(dispatch, url, {}, {}, fetchUserGeneralAction)
     }
 }
 
-export function findByUsernameAction(data) {
+export function pendingFetchUserGeneralAction() {
     return {
-        type: FIND_BY_USERNAME,
-        payload: data
+        type: PENDING_FETCH_USER_GENERAL_ACTION,
+        payload: true
     };
 }
 
-export function previewUser(flag) {
+export function fetchUserGeneralAction(data) {
+    return {
+        type: FETCH_USER_GENERAL_ACTION,
+        payload: data.data
+    };
+}
+
+//========================== User transactions ==========================
+export function fetchUserTransactions(id, config) {
+    let url = env.API_URL + 'users/' + id + '/transactions';
     return dispatch => {
-        dispatch(previewUserAction(flag));
+        dispatch(pendingFetchUserTransactionsAction())
+        return post(dispatch, url, {}, config, fetchUserTransactionAction)
     }
 }
 
-export function previewUserAction(flag) {
+export function pendingFetchUserTransactionsAction() {
     return {
-        type: PREVIEW_USER,
-        payload: flag
+        type: PENDING_FETCH_USER_TRANSACTIONS_ACTION,
+        payload: true
+    };
+}
+
+export function fetchUserTransactionAction(data) {
+    return {
+        type: FETCH_USER_TRANSACTIONS_ACTION,
+        payload: data.data !== undefined && data.data !== null ? data.data : []
+    };
+}
+
+// ========================== User orders ==========================
+export function fetchUserOrders(id, config) {
+    let url = env.API_URL + 'users/' + id + '/orders';
+    return dispatch => {
+        dispatch(pendingFetchUserOrdersAction())
+        return post(dispatch, url, {}, config, fetchUserOrdersAction)
+    }
+}
+
+export function pendingFetchUserOrdersAction() {
+    return {
+        type: PENDING_FETCH_USER_ORDERS_ACTION,
+        payload: true
+    };
+}
+
+export function fetchUserOrdersAction(data) {
+    return {
+        type: FETCH_USER_ORDERS_ACTION,
+        payload: data.data !== undefined && data.data !== null ? data.data : []
     };
 }

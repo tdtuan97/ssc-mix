@@ -1,0 +1,15 @@
+.user-tabs{
+    .data-list{
+        .list-item{
+            font-weight: bold;
+            .item-data{
+                .item-data-key{
+                    display: inline-block;
+                    width: 100px;
+                    color: $colorGray;
+                    margin-right: $distanceItem;
+                }
+            }
+        }
+    }
+}

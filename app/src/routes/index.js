@@ -2,8 +2,8 @@ import React, {Component} from "react"
 import {Switch} from "react-router-dom"
 import {PublicRoute} from './PublicRoute'
 import {PrivateRoute} from './PrivateRoute'
-import {HomePage} from '../features/HomePage'
-import {UserList} from '../features/Users'
+import {HomePage, ContactPage, AboutPage} from '../features/Home'
+import {UserDetail} from '../features/Users'
 import {Login, Register} from '../features/Auth'
 
 class Routes extends Component {
@@ -21,15 +21,17 @@ class Routes extends Component {
                 <PublicRoute path="/" layout='App' exact={true}>
                     <HomePage/>
                 </PublicRoute>
-                <PublicRoute path="/products" layout='Auth'>
-                    <UserList/>
+                <PublicRoute path="/contact" layout='App'>
+                    <ContactPage/>
+                </PublicRoute>
+                <PublicRoute path="/about" layout='App'>
+                    <AboutPage/>
                 </PublicRoute>
                 {/*Public route*/}
 
-
                 {/*Private route*/}
-                <PrivateRoute path="/users" layout='App'>
-                    <UserList/>
+                <PrivateRoute path="/users/:id" layout='App'>
+                    <UserDetail/>
                 </PrivateRoute>
                 {/*Private route*/}
             </Switch>
