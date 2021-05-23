@@ -17,9 +17,17 @@ class ListOrders extends Component {
                                   renderItem={item => (
                                       <List.Item key={item.id} className="list-item">
                                           <List.Item.Meta
-                                              title={<div>{item.id}</div>}
+                                              title={
+                                                  <div className="item-meta-data">
+                                                      <span className="item-data-key">
+                                                          ID:
+                                                      </span>
+                                                      <span className="item-data-value">
+                                                          {item.id}
+                                                      </span>
+                                                  </div>
+                                              }
                                               description={item.description}
-                                              className="item-meta-data"
                                           />
                                           <div className="item-data">
                                             <span className="item-data-key">
