@@ -34,8 +34,8 @@ export function fetchUserGeneralAction(data) {
 }
 
 //========================== User transactions ==========================
-export function fetchUserTransactions(id, config) {
-    let url = env.API_URL + 'users/' + id + '/transactions';
+export function fetchUserTransactions(username, config) {
+    let url = env.API_URL + 'users/' + username + '/transactions';
     return dispatch => {
         dispatch(pendingFetchUserTransactionsAction())
         return post(dispatch, url, {}, config, fetchUserTransactionAction)
@@ -57,8 +57,8 @@ export function fetchUserTransactionAction(data) {
 }
 
 // ========================== User orders ==========================
-export function fetchUserOrders(id, config) {
-    let url = env.API_URL + 'users/' + id + '/orders';
+export function fetchUserOrders(username, config) {
+    let url = env.API_URL + 'users/' + username + '/orders';
     return dispatch => {
         dispatch(pendingFetchUserOrdersAction())
         return post(dispatch, url, {}, config, fetchUserOrdersAction)

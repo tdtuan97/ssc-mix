@@ -22,12 +22,14 @@ class Container extends Component {
 
     componentDidMount() {
         const auth   = this.props.auth;
+        const router  = this.props.router;
+        const username = router.location.pathname.replace("/users/", "");
         const config = {
             headers: {Authorization: `Bearer ${auth.token}`}
         }
-        this.props.fetchUserGeneral(auth.username)
-        this.props.fetchUserTransactions(auth.id, config)
-        this.props.fetchUserOrders(auth.id, config)
+        this.props.fetchUserGeneral(username)
+        this.props.fetchUserTransactions(username, config)
+        this.props.fetchUserOrders(username, config)
     }
 }
 
@@ -36,17 +38,18 @@ function mapDispatchToProps(dispatch) {
         fetchUserGeneral: (username) => {
             dispatch(fetchUserGeneral(username));
         },
-        fetchUserTransactions: (id, config) => {
-            dispatch(fetchUserTransactions(id, config));
+        fetchUserTransactions: (username, config) => {
+            dispatch(fetchUserTransactions(username, config));
         },
-        fetchUserOrders: (id, config) => {
-            dispatch(fetchUserOrders(id, config));
+        fetchUserOrders: (username, config) => {
+            dispatch(fetchUserOrders(username, config));
         },
     };
 }
 
 function mapStateToProps(state) {
     return {
+        router: state.router,
         auth: state.auth,
         user: state.user,
     }
