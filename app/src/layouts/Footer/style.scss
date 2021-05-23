@@ -2,7 +2,6 @@
     background: #001529;
     overflow: hidden;
     position: relative;
-    min-height: 360px;
     color: #999;
     width: 100%;
 
@@ -33,7 +32,7 @@
         }
 
         .home-page {
-            padding: 64px 24px 80px;
+            padding: 64px $distanceComponent 64px;
             height: 100%;
             max-width: 1200px;
             position: relative;
