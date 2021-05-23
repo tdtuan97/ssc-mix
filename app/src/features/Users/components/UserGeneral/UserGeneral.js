@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {CreditCardOutlined, InfoCircleOutlined, ShoppingCartOutlined, UserOutlined} from "@ant-design/icons";
+import {CreditCardOutlined, ShoppingCartOutlined, UserOutlined} from "@ant-design/icons";
 import {Loading} from "../../../../layouts/Loading";
 import {Avatar, Card} from "antd";
 import img_user from "../../../../images/users/user.png";

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom"
 import {Card, Modal, Row} from 'antd';
 import member_image_default from "../../../../../../images/users/user.png";
-import {InfoCircleOutlined, CreditCardOutlined, ShoppingCartOutlined} from "@ant-design/icons";
+import {InfoCircleOutlined, CreditCardOutlined} from "@ant-design/icons";
 import {DataError, Loading} from "../../../../../../layouts";
 
 class MemberPreview extends Component {
