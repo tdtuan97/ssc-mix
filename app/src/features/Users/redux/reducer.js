@@ -6,6 +6,12 @@ import {
     PENDING_FETCH_USER_GENERAL_ACTION,
     PENDING_FETCH_USER_TRANSACTIONS_ACTION,
     PENDING_FETCH_USER_ORDERS_ACTION,
+    USER_TRANSACTIONS_RESET_ACTION,
+    USER_TRANSACTIONS_PENDING_ACTION,
+    USER_TRANSACTIONS_SUBMIT_ACTION,
+    USER_ORDERS_PENDING_ACTION,
+    USER_ORDERS_RESET_ACTION,
+    USER_ORDERS_SUBMIT_ACTION
 } from "./constants";
 
 export function reducer(state = initialState, action) {
@@ -45,6 +51,60 @@ export function reducer(state = initialState, action) {
                 pendingFetchOrders: true
             };
 
+        case USER_TRANSACTIONS_PENDING_ACTION:
+            return {
+                ...state,
+                formTransaction: {
+                    ...state.formTransaction,
+                    pending: true
+                }
+            };
+        case USER_TRANSACTIONS_RESET_ACTION:
+            return {
+                ...state,
+                formTransaction: {
+                    ...state.formTransaction,
+                    data: {},
+                    errors: {},
+                    pending: false,
+                }
+            };
+        case USER_TRANSACTIONS_SUBMIT_ACTION:
+            return {
+                ...state,
+                formTransaction: {
+                    ...state.formTransaction,
+                    ...action.payload,
+                    pending: false,
+                }
+            };
+        case USER_ORDERS_PENDING_ACTION:
+            return {
+                ...state,
+                formOrder: {
+                    ...state.formOrder,
+                    pending: true
+                }
+            };
+        case USER_ORDERS_RESET_ACTION:
+            return {
+                ...state,
+                formOrder: {
+                    ...state.formOrder,
+                    data: {},
+                    errors: {},
+                    pending: false,
+                }
+            };
+        case USER_ORDERS_SUBMIT_ACTION:
+            return {
+                ...state,
+                formOrder: {
+                    ...state.formOrder,
+                    ...action.payload,
+                    pending: false,
+                }
+            };
         default:
             return state;
     }

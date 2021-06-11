@@ -16,14 +16,16 @@ class UserGeneral extends Component {
                     <UserOutlined/> General
                 </div>
             }
-                  actions={[
-                      <Link key="orders-create" to="/orders/create" target="_blank">
-                          <ShoppingCartOutlined/> New order
-                      </Link>,
-                      <Link key="transactions-create" to="/transactions/create" target="_blank">
-                          <CreditCardOutlined/> Pay in
-                      </Link>,
-                  ]}
+                  actions={
+                      user !== null ?
+                          [
+                              <Link key="orders-create" to="/orders/create">
+                                  <ShoppingCartOutlined/> New order
+                              </Link>,
+                              <Link key="transactions-create" to={"/users/" + user.username + "/transactions/create"}>
+                                  <CreditCardOutlined/> Pay in
+                              </Link>,
+                          ] : []}
             >
                 {
                     pendingFetchGeneral ? <Loading/> :

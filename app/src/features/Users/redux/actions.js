@@ -6,6 +6,9 @@ import {
     PENDING_FETCH_USER_GENERAL_ACTION,
     PENDING_FETCH_USER_TRANSACTIONS_ACTION,
     PENDING_FETCH_USER_ORDERS_ACTION,
+    USER_TRANSACTIONS_SUBMIT_ACTION,
+    USER_TRANSACTIONS_PENDING_ACTION,
+    USER_TRANSACTIONS_RESET_ACTION,
 } from "./constants";
 
 let env = require("../../../config/env");
@@ -76,5 +79,48 @@ export function fetchUserOrdersAction(data) {
     return {
         type: FETCH_USER_ORDERS_ACTION,
         payload: data.data !== undefined && data.data !== null ? data.data : []
+    };
+}
+
+// ========================== User create transaction ==========================
+export function userTransactionsSubmit(data, config) {
+    let url = env.API_URL + 'transactions/pay-in';
+    return dispatch => {
+        dispatch(userTransactionsPendingAction())
+        return post(dispatch, url, data, config, userTransactionsSubmitAction)
+    }
+}
+
+export function userTransactionsPendingAction() {
+    return {
+        type: USER_TRANSACTIONS_PENDING_ACTION,
+        payload: true
+    };
+}
+
+export function userTransactionsReset() {
+    return dispatch => {
+        dispatch(userTransactionsResetAction())
+    }
+}
+
+export function userTransactionsResetAction() {
+    return {
+        type: USER_TRANSACTIONS_RESET_ACTION,
+        payload: {
+            data: {},
+            errors: {}
+        }
+    };
+}
+
+export function userTransactionsSubmitAction(data) {
+    const payload   = {
+        data: data.data !== undefined && data.data !== null ? data.data : {},
+        errors: data.errors !== undefined && data.errors !== null ? data.errors : {},
+    }
+    return {
+        type: USER_TRANSACTIONS_SUBMIT_ACTION,
+        payload: payload
     };
 }

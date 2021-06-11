@@ -3,11 +3,11 @@ import {Switch} from "react-router-dom"
 import {PublicRoute} from './PublicRoute'
 import {PrivateRoute} from './PrivateRoute'
 import {HomePage, ContactPage, AboutPage} from '../features/Home'
-import {UserDetail} from '../features/Users'
+import {UserDetail, CreateTransaction} from '../features/Users'
 import {Login, Register} from '../features/Auth'
-import {TransactionCreate} from "../features/Transactions";
-import {OrderCreate} from "../features/Orders";
 import {ErrorPage} from "../features/Exceptions";
+import {connect} from "react-redux";
+import {openNotificationWithIcon} from "../layouts"
 
 class Routes extends Component {
     render() {
@@ -28,7 +28,6 @@ class Routes extends Component {
                     <ErrorPage layout='App'/>
                 </PublicRoute>
 
-
                 <PublicRoute path="/" layout='App' exact={true}>
                     <HomePage/>
                 </PublicRoute>
@@ -41,19 +40,39 @@ class Routes extends Component {
                 {/*Public route*/}
 
                 {/*Private route*/}
-                <PrivateRoute path="/users/:id" layout='App'>
+                <PrivateRoute path="/users/:id" layout='App' exact={true}>
                     <UserDetail/>
                 </PrivateRoute>
-                <PrivateRoute path="/transactions/create" layout='App' roles={rules}>
-                    <TransactionCreate/>
+                <PrivateRoute path="/users/:id/transactions/create" layout='App' roles={rules}>
+                    <CreateTransaction/>
                 </PrivateRoute>
-                <PrivateRoute path="/orders/create" layout='App' roles={rules}>
-                    <OrderCreate/>
+                <PrivateRoute path="/users/:id/orders/create" layout='App' roles={rules}>
+                    <CreateTransaction/>
                 </PrivateRoute>
                 {/*Private route*/}
+
+                <PublicRoute path="*">
+                    <ErrorPage code={404} />
+                </PublicRoute>
             </Switch>
         );
     }
+
+    componentDidMount() {
+        openNotificationWithIcon('success');
+    }
 }
 
-export default Routes
+function mapDispatchToProps(dispatch) {
+    return {
+
+    };
+}
+
+function mapStateToProps(state) {
+    return {
+        crud: state.crud,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes)

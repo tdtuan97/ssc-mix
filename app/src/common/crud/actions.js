@@ -61,7 +61,7 @@ export function reject(dispatch, reason, callback) {
         data: null,
         code: null,
         message: MESSAGE_SERVER_ERROR,
-        errors: [],
+        errors: {},
         status: CODE_SERVER_ERROR,
         statusText: MESSAGE_SERVER_ERROR,
     };
@@ -72,7 +72,6 @@ export function reject(dispatch, reason, callback) {
         ...reason.response
     }
 
-    console.log(response)
     dispatch(responseAction(response))
 
     // Need callback function

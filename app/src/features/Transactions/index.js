@@ -1,1 +1,0 @@
-export {TransactionCreate} from './views/TransactionCreate'

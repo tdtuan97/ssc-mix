@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import President from './President';
 import {connect} from 'react-redux';
 import {fetchUserGeneral, fetchUserOrders, fetchUserTransactions} from "../../redux/actions";
+import {createMatchSelector} from "connected-react-router";
 
 class Container extends Component {
     render() {
@@ -21,10 +22,9 @@ class Container extends Component {
     }
 
     componentDidMount() {
-        const auth   = this.props.auth;
-        const router  = this.props.router;
-        const username = router.location.pathname.replace("/users/", "");
-        const config = {
+        const auth       = this.props.auth;
+        const {username} = this.props.match.params;
+        const config     = {
             headers: {Authorization: `Bearer ${auth.token}`}
         }
         this.props.fetchUserGeneral(username)
@@ -48,10 +48,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
+    const matchSelector = createMatchSelector("/users/:username");
     return {
-        router: state.router,
         auth: state.auth,
         user: state.user,
+        match: matchSelector(state)
     }
 }
 
