@@ -15,6 +15,7 @@ class President extends Component {
         const pendingFetchOrders       = this.props.pendingFetchOrders
         const transactions             = this.props.transactions
         const pendingFetchTransactions = this.props.pendingFetchTransactions
+        const generalMenu              = this.props.generalMenu
         return (
             <div className="features feature-user">
                 <Row gutter={24}
@@ -24,6 +25,7 @@ class President extends Component {
                             user={user}
                             pendingFetchGeneral={pendingFetchGeneral}
                             errorMessage={errorMessage}
+                            generalMenu={generalMenu}
                         />
                     </Col>
                     <Col xs={24} md={16}>

@@ -3,11 +3,9 @@ import {Switch} from "react-router-dom"
 import {PublicRoute} from './PublicRoute'
 import {PrivateRoute} from './PrivateRoute'
 import {HomePage, ContactPage, AboutPage} from '../features/Home'
-import {UserDetail, CreateTransaction} from '../features/Users'
+import {UserDetail, CreateTransaction, CreateOrder} from '../features/Users'
 import {Login, Register} from '../features/Auth'
 import {ErrorPage} from "../features/Exceptions";
-import {connect} from "react-redux";
-import {openNotificationWithIcon} from "../layouts"
 
 class Routes extends Component {
     render() {
@@ -47,7 +45,7 @@ class Routes extends Component {
                     <CreateTransaction/>
                 </PrivateRoute>
                 <PrivateRoute path="/users/:id/orders/create" layout='App' roles={rules}>
-                    <CreateTransaction/>
+                    <CreateOrder/>
                 </PrivateRoute>
                 {/*Private route*/}
 
@@ -58,21 +56,6 @@ class Routes extends Component {
         );
     }
 
-    componentDidMount() {
-        openNotificationWithIcon('success');
-    }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-
-    };
-}
-
-function mapStateToProps(state) {
-    return {
-        crud: state.crud,
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Routes)
+export default Routes

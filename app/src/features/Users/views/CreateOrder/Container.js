@@ -3,7 +3,8 @@ import President from './President';
 import {connect} from 'react-redux';
 import {
     fetchUserGeneral,
-    userTransactionsSubmit
+    userTransactionsSubmit,
+    userOrdersSubmit,
 } from "../../redux/actions";
 import {createMatchSelector} from "connected-react-router";
 
@@ -18,6 +19,19 @@ class Container extends Component {
                 description: null
             }
         }
+    }
+
+    handleOrderSubmit = () => {
+        const config = {
+            headers: {Authorization: `Bearer ${this.props.auth.token}`}
+        }
+        this.props.userOrdersSubmit(this.state.formData, config)
+
+        // Close popup
+        this.setState({
+            ...this.state,
+            visibleConfirm: false
+        })
     }
 
     handleOK = (data) => {
@@ -38,33 +52,19 @@ class Container extends Component {
         })
     }
 
-    handleTransactionSubmit = () => {
-        const config = {
-            headers: {Authorization: `Bearer ${this.props.auth.token}`}
-        }
-
-        this.props.userTransactionsSubmit(this.state.formData, config)
-
-        // Close popup
-        this.setState({
-            ...this.state,
-            visibleConfirm: false
-        })
-    }
-
     render() {
         const reducer        = this.props.user;
         const visibleConfirm = this.state.visibleConfirm;
         const generalMenu    = [
-            'orders-create',
+            'transactions-create',
             'information',
         ];
         return (
             <President
                 user={reducer.user}
                 pendingFetchGeneral={reducer.pendingFetchGeneral}
-                formTransaction={reducer.formTransaction}
-                handleTransactionSubmit={this.handleTransactionSubmit}
+                formOrder={reducer.formOrder}
+                handleOrderSubmit={this.handleOrderSubmit}
                 generalMenu={generalMenu}
                 visibleConfirm={visibleConfirm}
                 handleOK={this.handleOK}
@@ -90,11 +90,14 @@ function mapDispatchToProps(dispatch) {
         userTransactionsSubmit: (data, config) => {
             dispatch(userTransactionsSubmit(data, config));
         },
+        userOrdersSubmit: (data, config) => {
+            dispatch(userOrdersSubmit(data, config));
+        },
     };
 }
 
 function mapStateToProps(state) {
-    const matchSelector = createMatchSelector("/users/:username/transactions/create");
+    const matchSelector = createMatchSelector("/users/:username/orders/create");
     return {
         auth: state.auth,
         user: state.user,

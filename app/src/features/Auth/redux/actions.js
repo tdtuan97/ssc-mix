@@ -17,7 +17,7 @@ export function login(data) {
     }
 }
 
-export function setTokenAction(data) {
+export function setTokenAction(dispatch, data) {
     if (data.code === CODE_SUCCESS) {
         localStorage.setItem(ARG_TOKEN, JSON.stringify(data.data))
     }

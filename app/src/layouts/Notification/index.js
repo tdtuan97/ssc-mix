@@ -1,1 +1,6 @@
-export {default as openNotificationWithIcon} from './Component'
+export {
+    pushNotification,
+    pushMessageSuccess,
+    pushMessageError,
+    pushMessageLoading,
+} from './Component'

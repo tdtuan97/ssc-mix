@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {CreditCardOutlined, ShoppingCartOutlined, UserOutlined} from "@ant-design/icons";
+import {CreditCardOutlined, InfoCircleOutlined, ShoppingCartOutlined, UserOutlined} from "@ant-design/icons";
 import {Loading} from "../../../../layouts/Loading";
 import {Avatar, Card} from "antd";
 import img_user from "../../../../images/users/user.png";
@@ -7,25 +7,46 @@ import {DataError} from "../../../../layouts"
 import {Link} from "react-router-dom";
 
 class UserGeneral extends Component {
+    getActions = (user, generalMenu) => {
+        const menu = [];
+        if (user !== null) {
+            if (generalMenu.indexOf('information') !== -1) {
+                menu.push(
+                    <Link key="edit" to={'/users/' + user.username}>
+                        <InfoCircleOutlined/> Information
+                    </Link>
+                )
+            }
+            if (generalMenu.indexOf('orders-create') !== -1) {
+                menu.push(
+                    <Link key="orders-create" to={"/users/" + user.username + "/orders/create"}>
+                        <ShoppingCartOutlined/> New order
+                    </Link>
+                )
+            }
+            if (generalMenu.indexOf('transactions-create') !== -1) {
+                menu.push(
+                    <Link key="transactions-create" to={"/users/" + user.username + "/transactions/create"}>
+                        <CreditCardOutlined/> Pay in
+                    </Link>
+                )
+            }
+        }
+
+        return menu
+    }
+
     render() {
         const user                = this.props.user
         const pendingFetchGeneral = this.props.pendingFetchGeneral
+        const generalMenu         = this.props.generalMenu
         return (
             <Card title={
                 <div>
                     <UserOutlined/> General
                 </div>
             }
-                  actions={
-                      user !== null ?
-                          [
-                              <Link key="orders-create" to="/orders/create">
-                                  <ShoppingCartOutlined/> New order
-                              </Link>,
-                              <Link key="transactions-create" to={"/users/" + user.username + "/transactions/create"}>
-                                  <CreditCardOutlined/> Pay in
-                              </Link>,
-                          ] : []}
+                  actions={this.getActions(user, generalMenu)}
             >
                 {
                     pendingFetchGeneral ? <Loading/> :

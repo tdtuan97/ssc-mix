@@ -8,8 +8,10 @@ import {
     PENDING_FETCH_USER_ORDERS_ACTION,
     USER_TRANSACTIONS_SUBMIT_ACTION,
     USER_TRANSACTIONS_PENDING_ACTION,
-    USER_TRANSACTIONS_RESET_ACTION,
+    USER_ORDERS_SUBMIT_ACTION,
+    USER_ORDERS_PENDING_ACTION,
 } from "./constants";
+import {pushMessageSuccess} from "../../../layouts";
 
 let env = require("../../../config/env");
 
@@ -29,7 +31,7 @@ export function pendingFetchUserGeneralAction() {
     };
 }
 
-export function fetchUserGeneralAction(data) {
+export function fetchUserGeneralAction(dispatch, data) {
     return {
         type: FETCH_USER_GENERAL_ACTION,
         payload: data.data
@@ -52,7 +54,7 @@ export function pendingFetchUserTransactionsAction() {
     };
 }
 
-export function fetchUserTransactionAction(data) {
+export function fetchUserTransactionAction(dispatch, data) {
     return {
         type: FETCH_USER_TRANSACTIONS_ACTION,
         payload: data.data !== undefined && data.data !== null ? data.data : []
@@ -75,7 +77,7 @@ export function pendingFetchUserOrdersAction() {
     };
 }
 
-export function fetchUserOrdersAction(data) {
+export function fetchUserOrdersAction(dispatch, data) {
     return {
         type: FETCH_USER_ORDERS_ACTION,
         payload: data.data !== undefined && data.data !== null ? data.data : []
@@ -98,29 +100,58 @@ export function userTransactionsPendingAction() {
     };
 }
 
-export function userTransactionsReset() {
-    return dispatch => {
-        dispatch(userTransactionsResetAction())
-    }
-}
-
-export function userTransactionsResetAction() {
-    return {
-        type: USER_TRANSACTIONS_RESET_ACTION,
-        payload: {
-            data: {},
-            errors: {}
-        }
-    };
-}
-
-export function userTransactionsSubmitAction(data) {
+export function userTransactionsSubmitAction(dispatch, data) {
     const payload   = {
         data: data.data !== undefined && data.data !== null ? data.data : {},
         errors: data.errors !== undefined && data.errors !== null ? data.errors : {},
     }
+
+    if (data.code === 200){
+        pushMessageSuccess();
+
+        setTimeout(() => {
+            dispatch(fetchUserGeneral(payload.data.username))
+        }, 1000)
+    }
+
     return {
         type: USER_TRANSACTIONS_SUBMIT_ACTION,
+        payload: payload
+    };
+}
+
+// ========================== User create order ==========================
+export function userOrdersSubmit(data, config) {
+    let url = env.API_URL + 'orders/insert';
+    return dispatch => {
+        dispatch(userOrdersPendingAction())
+        return post(dispatch, url, data, config, userOrdersSubmitAction)
+    }
+}
+
+export function userOrdersPendingAction() {
+    return {
+        type: USER_ORDERS_PENDING_ACTION,
+        payload: true
+    };
+}
+
+export function userOrdersSubmitAction(dispatch, data) {
+    const payload   = {
+        data: data.data !== undefined && data.data !== null ? data.data : {},
+        errors: data.errors !== undefined && data.errors !== null ? data.errors : {},
+    }
+
+    if (data.code === 200){
+        pushMessageSuccess();
+
+        setTimeout(() => {
+            dispatch(fetchUserGeneral(payload.data.username))
+        }, 1000)
+    }
+
+    return {
+        type: USER_ORDERS_SUBMIT_ACTION,
         payload: payload
     };
 }

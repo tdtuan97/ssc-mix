@@ -7,6 +7,10 @@ import {createMatchSelector} from "connected-react-router";
 class Container extends Component {
     render() {
         const reducer = this.props.user;
+        const generalMenu = [
+          'orders-create',
+          'transactions-create',
+        ];
         return (
             <President
                 user={reducer.user}
@@ -15,8 +19,7 @@ class Container extends Component {
                 pendingFetchOrders={reducer.pendingFetchOrders}
                 transactions={reducer.transactions}
                 pendingFetchTransactions={reducer.pendingFetchTransactions}
-                errorMessage="Cannot fetch data"
-                messageEmptyList="Empty list"
+                generalMenu={generalMenu}
             />
         )
     }

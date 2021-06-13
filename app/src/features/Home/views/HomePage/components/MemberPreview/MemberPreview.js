@@ -8,6 +8,7 @@ import {DataError, Loading} from "../../../../../../layouts";
 class MemberPreview extends Component {
     render() {
         const props = this.props;
+        const user  = props.userPreview;
         return (
             <Modal title="Member"
                    visible={props.preview}
@@ -19,18 +20,19 @@ class MemberPreview extends Component {
                     {
                         props.previewUserPending ? <Loading/>
                             : (
-                                props.userPreview !== null ?
+                                user !== null ?
                                     (
                                         <Card
                                             actions={[
                                                 <div onClick={() => props.handleCancel()}>
                                                     <Link key="edit"
-                                                          to={'users/' + props.userPreview.username}>
+                                                          to={'users/' + user.username}>
                                                         <InfoCircleOutlined/> Information
                                                     </Link>
                                                 </div>,
                                                 <div onClick={() => props.handleCancel()}>
-                                                    <Link key="pay-in" to="transactions/create">
+                                                    <Link key="transactions-create"
+                                                          to={"/users/" + user.username + "/transactions/create"}>
                                                         <CreditCardOutlined/> Pay in
                                                     </Link>
                                                 </div>,
@@ -50,19 +52,19 @@ class MemberPreview extends Component {
                                                     className="member-detail-content ant-col-xs-24 ant-col-sm-18 ant-col-md-16">
                                                     <div className="member-detail">
                                                         <span className="title">UUID:</span>
-                                                        <span className="value">{props.userPreview.id}</span>
+                                                        <span className="value">{user.id}</span>
                                                     </div>
                                                     <div className="member-detail">
                                                         <span className="title">Username:</span>
-                                                        <span className="value">{props.userPreview.username}</span>
+                                                        <span className="value">{user.username}</span>
                                                     </div>
                                                     <div className="member-detail">
                                                         <span className="title">Full name:</span>
-                                                        <span className="value">{props.userPreview.full_name}</span>
+                                                        <span className="value">{user.full_name}</span>
                                                     </div>
                                                     <div className="member-detail">
                                                         <span className="title">Balance:</span>
-                                                        <span className="value">{props.userPreview.balance}</span>
+                                                        <span className="value">{user.balance}</span>
                                                     </div>
                                                 </div>
                                             </Row>

@@ -4,7 +4,7 @@ import {
     Row,
     Col
 } from 'antd';
-import {TransactionForm} from "../../components";
+import {OrderForm} from "../../components";
 import {ModalConfirm} from "../../../../layouts";
 
 class President extends Component {
@@ -13,13 +13,13 @@ class President extends Component {
                   errorMessage,
                   user,
                   pendingFetchGeneral,
-                  handleTransactionSubmit,
-                  formTransaction,
+                  handleOrderSubmit,
+                  formOrder,
                   generalMenu,
                   visibleConfirm,
                   handleOK,
                   handleCancel,
-              } = this.props
+              } = this.props;
         return (
             <div className="features feature-user">
                 <Row gutter={24}
@@ -33,17 +33,17 @@ class President extends Component {
                         />
                     </Col>
                     <Col xs={24} md={16}>
-                        <TransactionForm
+                        <OrderForm
                             user={user}
                             pendingFetchGeneral={pendingFetchGeneral}
-                            handleSubmitForm={handleOK}
-                            formTransaction={formTransaction}
+                            handleOK={handleOK}
+                            formOrder={formOrder}
                             errorMessage={errorMessage}
                         />
                     </Col>
                 </Row>
                 <ModalConfirm
-                    onOk={handleTransactionSubmit}
+                    onOk={handleOrderSubmit}
                     visible={visibleConfirm}
                     onCancel={handleCancel}
                     message="Are you sure ?"

@@ -3,37 +3,36 @@ import {CreditCardOutlined} from "@ant-design/icons";
 import {Loading, DataError, AntFormItem} from "../../../../layouts";
 import {Button, Card, Input, InputNumber, Form as AntForm} from "antd";
 
-class TransactionForm extends Component {
+class OrderForm extends Component {
 
     render() {
         const {
                   user,
                   pendingFetchGeneral,
-                  formTransaction,
-                  handleSubmitForm,
-              } = this.props;
-
-        const errors = formTransaction.errors
+                  formOrder,
+                  handleOK
+              }      = this.props;
+        const errors = formOrder.errors
 
         return (
             <Card title={
                 <div>
-                    <CreditCardOutlined/> Pay in
+                    <CreditCardOutlined/> New order
                 </div>
-            } className="transaction-form">
+            } className="order-form">
                 {
                     pendingFetchGeneral ? <Loading/> :
                         (
                             user === null ? <DataError/> :
                                 <AntForm {...formItemLayout}
                                          name="control-ref"
-                                         onFinish={data => handleSubmitForm(data)}
+                                         onFinish={data => handleOK(data)}
                                 >
                                     <AntFormItem name="amount"
                                                  label="Amount"
                                                  errors={errors.amount}
                                     >
-                                        <InputNumber className="pay-in-amount"
+                                        <InputNumber className="order-amount"
                                                      min={0}
                                                      placeholder="Amount"
                                         />
@@ -45,8 +44,8 @@ class TransactionForm extends Component {
                                     </AntFormItem>
                                     <AntFormItem {...tailFormItemLayout}>
                                         <Button type="primary" htmlType="submit" className="form-submit"
-                                                disabled={formTransaction.pending}>
-                                            Pay in
+                                                disabled={formOrder.pending}>
+                                            Create order
                                         </Button>
                                     </AntFormItem>
                                 </AntForm>
@@ -57,7 +56,7 @@ class TransactionForm extends Component {
     }
 }
 
-export default TransactionForm
+export default OrderForm
 const formItemLayout     = {
     labelCol: {
         xs: {span: 24},

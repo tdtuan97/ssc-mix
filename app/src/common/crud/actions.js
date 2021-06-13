@@ -51,7 +51,7 @@ export function post(dispatch, url = '', data = {}, config = {}, callback = null
 export function resolve(dispatch, response, callback) {
     dispatch(responseAction(response))
     if (typeof callback === "function") {
-        dispatch(callback(response.data))
+        dispatch(callback(dispatch, response.data))
     }
 }
 
@@ -76,7 +76,7 @@ export function reject(dispatch, reason, callback) {
 
     // Need callback function
     if (typeof callback === "function") {
-        dispatch(callback(response.data))
+        dispatch(callback(dispatch, response.data))
     }
 
     // For case auth
@@ -92,8 +92,8 @@ function responseAction(response) {
         code: data.code,
         message: data.message,
         errors: data.errors,
-        status: response.status,
-        statusText: response.statusText,
+        status: response.status !== undefined ? response.status : CODE_SERVER_ERROR,
+        statusText: response.statusText !== undefined ? response.statusText : MESSAGE_SERVER_ERROR,
     }
 
     return {

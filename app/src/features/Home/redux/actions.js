@@ -18,7 +18,7 @@ export function fetchUsersPendingAction() {
     };
 }
 
-export function fetchUsersAction(data) {
+export function fetchUsersAction(dispatch, data) {
     return {
         type: FETCH_USERS,
         payload: data.data !== null ? data.data : []
@@ -40,7 +40,7 @@ export function findByUsernamePendingAction() {
     };
 }
 
-export function findByUsernameAction(data) {
+export function findByUsernameAction(dispatch, data) {
     return {
         type: FIND_BY_USERNAME,
         payload: data.data

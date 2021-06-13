@@ -1,4 +1,5 @@
 import initialState from "./initialState";
+import {LOCATION_CHANGE} from 'connected-react-router';
 import {
     FETCH_USER_GENERAL_ACTION,
     FETCH_USER_TRANSACTIONS_ACTION,
@@ -6,17 +7,19 @@ import {
     PENDING_FETCH_USER_GENERAL_ACTION,
     PENDING_FETCH_USER_TRANSACTIONS_ACTION,
     PENDING_FETCH_USER_ORDERS_ACTION,
-    USER_TRANSACTIONS_RESET_ACTION,
     USER_TRANSACTIONS_PENDING_ACTION,
     USER_TRANSACTIONS_SUBMIT_ACTION,
     USER_ORDERS_PENDING_ACTION,
-    USER_ORDERS_RESET_ACTION,
     USER_ORDERS_SUBMIT_ACTION
 } from "./constants";
 
 export function reducer(state = initialState, action) {
     let payload = action.payload;
     switch (action.type) {
+        case LOCATION_CHANGE:
+            return {
+                ...initialState
+            }
         case FETCH_USER_GENERAL_ACTION:
             return {
                 ...state,
@@ -59,16 +62,6 @@ export function reducer(state = initialState, action) {
                     pending: true
                 }
             };
-        case USER_TRANSACTIONS_RESET_ACTION:
-            return {
-                ...state,
-                formTransaction: {
-                    ...state.formTransaction,
-                    data: {},
-                    errors: {},
-                    pending: false,
-                }
-            };
         case USER_TRANSACTIONS_SUBMIT_ACTION:
             return {
                 ...state,
@@ -86,16 +79,7 @@ export function reducer(state = initialState, action) {
                     pending: true
                 }
             };
-        case USER_ORDERS_RESET_ACTION:
-            return {
-                ...state,
-                formOrder: {
-                    ...state.formOrder,
-                    data: {},
-                    errors: {},
-                    pending: false,
-                }
-            };
+
         case USER_ORDERS_SUBMIT_ACTION:
             return {
                 ...state,
@@ -106,6 +90,6 @@ export function reducer(state = initialState, action) {
                 }
             };
         default:
-            return state;
+            return state
     }
 }

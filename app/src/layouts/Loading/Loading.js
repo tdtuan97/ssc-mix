@@ -5,7 +5,7 @@ class Loading extends Component {
     render() {
         return (
             <div className="loading-wrapper">
-                <Spin size="large" tip="Loading ..."/>
+                <Spin size="large" tip="Loading..."/>
             </div>
         )
     }
