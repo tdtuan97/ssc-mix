@@ -8,7 +8,6 @@ import {
 class President extends Component {
     render() {
         const errorMessage             = this.props.errorMessage;
-        const messageEmptyList         = this.props.messageEmptyList;
         const user                     = this.props.user
         const pendingFetchGeneral      = this.props.pendingFetchGeneral
         const orders                   = this.props.orders
@@ -34,7 +33,6 @@ class President extends Component {
                             pendingFetchOrders={pendingFetchOrders}
                             transactions={transactions}
                             pendingFetchTransactions={pendingFetchTransactions}
-                            messageEmptyList={messageEmptyList}
                         />
                     </Col>
                 </Row>

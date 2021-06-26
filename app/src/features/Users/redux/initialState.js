@@ -13,18 +13,6 @@ const initialState = {
     pendingFetchGeneral: false,
     pendingFetchTransactions: false,
     pendingFetchOrders: false,
-
-    formTransaction: {
-        data: {},
-        errors: {},
-        pending: false
-    },
-
-    formOrder: {
-        data: {},
-        errors: {},
-        pending: false
-    },
 };
 
 export default initialState;

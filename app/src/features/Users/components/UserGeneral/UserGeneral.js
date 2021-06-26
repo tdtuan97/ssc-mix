@@ -39,14 +39,12 @@ class UserGeneral extends Component {
     render() {
         const user                = this.props.user
         const pendingFetchGeneral = this.props.pendingFetchGeneral
-        const generalMenu         = this.props.generalMenu
         return (
             <Card title={
                 <div>
                     <UserOutlined/> General
                 </div>
             }
-                  actions={this.getActions(user, generalMenu)}
             >
                 {
                     pendingFetchGeneral ? <Loading/> :
@@ -60,9 +58,6 @@ class UserGeneral extends Component {
                                         />
                                         <div className="avatar-label">
                                             {user.full_name}
-                                        </div>
-                                        <div className="avatar-description">
-                                            海纳百川，有容乃大
                                         </div>
                                     </div>
                                     <div className="user-data account-wrapper">

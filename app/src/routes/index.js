@@ -3,7 +3,7 @@ import {Switch} from "react-router-dom"
 import {PublicRoute} from './PublicRoute'
 import {PrivateRoute} from './PrivateRoute'
 import {HomePage, ContactPage, AboutPage} from '../features/Home'
-import {UserDetail, CreateTransaction, CreateOrder} from '../features/Users'
+import {UserDetail} from '../features/Users'
 import {Login, Register} from '../features/Auth'
 import {ErrorPage} from "../features/Exceptions";
 
@@ -40,12 +40,6 @@ class Routes extends Component {
                 {/*Private route*/}
                 <PrivateRoute path="/users/:id" layout='App' exact={true}>
                     <UserDetail/>
-                </PrivateRoute>
-                <PrivateRoute path="/users/:id/transactions/create" layout='App' roles={rules}>
-                    <CreateTransaction/>
-                </PrivateRoute>
-                <PrivateRoute path="/users/:id/orders/create" layout='App' roles={rules}>
-                    <CreateOrder/>
                 </PrivateRoute>
                 {/*Private route*/}
 

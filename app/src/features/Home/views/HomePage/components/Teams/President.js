@@ -20,7 +20,7 @@ class President extends Component {
                                         this.props.users.map((user, i) => {
                                             return (
                                                 <div key={i} className="ant-col block ant-col-xs-24 ant-col-md-8">
-                                                    <Member user={user} handlePreview={this.props.handlePreview}/>
+                                                    <Member user={user}/>
                                                 </div>
                                             )
                                         }) : <DataError/>)

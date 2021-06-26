@@ -9,9 +9,6 @@
 const initialState = {
     users: [],
     fetchUsersPending: false,
-    preview: false,
-    previewUser: null,
-    previewUserPending: false,
 };
 
 export default initialState;

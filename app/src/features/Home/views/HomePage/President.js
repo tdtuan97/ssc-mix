@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Banner, Teams, Content, MemberPreview} from "./components";
+import {Banner, Teams, Content} from "./components";
 
 class President extends Component {
     render() {
@@ -7,7 +7,6 @@ class President extends Component {
             <div className="features feature-home">
                 <Banner/>
                 <Teams {...this.props}/>
-                <MemberPreview{...this.props}/>
                 <Content/>
             </div>
         );

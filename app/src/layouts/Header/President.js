@@ -49,7 +49,7 @@ class President extends Component {
                                             </Menu.Item>
                                         </Menu>
                                     }>
-                                        <Link to='#'>
+                                        <Link to={'/users/' + auth.username}>
                                             <Avatar className="avatar" src={img_user}/>
                                             <span className="full-name">{auth.full_name}</span>
                                         </Link>
