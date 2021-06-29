@@ -38,9 +38,9 @@ class Routes extends Component {
                 {/*Public route*/}
 
                 {/*Private route*/}
-                <PrivateRoute path="/users/:id" layout='App' exact={true}>
+                <PublicRoute path="/users/:id" layout='App' exact={true}>
                     <UserDetail/>
-                </PrivateRoute>
+                </PublicRoute>
                 {/*Private route*/}
 
                 <PublicRoute path="*">

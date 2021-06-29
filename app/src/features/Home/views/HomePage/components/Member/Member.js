@@ -21,8 +21,9 @@ class Member extends Component {
                                 {user.full_name}
                             </div>
                         </Link>
-                        <div className="member-title">公司+职位 信息暂缺</div>
-                        <div className="member-description">语雀是一款优雅高效的在线文档编辑与协同工具。</div>
+                        <div className="member-title">{user.username}</div>
+                        <div className="member-description">{user.role === 'admin' ? 'Admin' : 'Member'}</div>
+                        <div className="member-description">SSC Lunch Group</div>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,25 @@
-import {get} from "../../../common/crud"
+import db from "../../../database/firestore"
 import {FETCH_USERS, FETCH_USERS_PENDING} from "./constants";
 
-const env = require("../../../config/env");
+const refMstUser = db.collection('mst_user')
 
 export function fetchUser() {
-    let url = env.API_URL + 'users';
     return dispatch => {
         dispatch(fetchUsersPendingAction());
-        return get(dispatch, url, {}, {}, fetchUsersAction)
+        let list = [];
+        return refMstUser.get().then(snapshot => {
+            snapshot.forEach(doc => {
+                let item = {
+                    id: doc.id,
+                    ...doc.data()
+                }
+                list.push(item);
+            });
+        }).catch(error => {
+            console.log(error)
+        }).finally(() => {
+            dispatch(fetchUsersAction(dispatch, {data: list}));
+        });
     }
 }
 
@@ -21,6 +33,6 @@ export function fetchUsersPendingAction() {
 export function fetchUsersAction(dispatch, data) {
     return {
         type: FETCH_USERS,
-        payload: data.data !== null ? data.data : []
+        payload: data.data
     };
 }

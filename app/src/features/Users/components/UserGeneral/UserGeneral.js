@@ -90,7 +90,7 @@ class UserGeneral extends Component {
                                                             Balance:
                                                         </span>
                                             <span className="account-data-value">
-                                                            {user.balance}
+                                                            {user.balance.toLocaleString()} VND
                                                         </span>
                                         </div>
                                     </div>

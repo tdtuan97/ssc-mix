@@ -1,21 +1,39 @@
-import {get, post} from "../../../common/crud"
 import {
     FETCH_USER_GENERAL_ACTION,
-    FETCH_USER_TRANSACTIONS_ACTION,
     FETCH_USER_ORDERS_ACTION,
+    FETCH_USER_TRANSACTIONS_ACTION,
     PENDING_FETCH_USER_GENERAL_ACTION,
-    PENDING_FETCH_USER_TRANSACTIONS_ACTION,
     PENDING_FETCH_USER_ORDERS_ACTION,
+    PENDING_FETCH_USER_TRANSACTIONS_ACTION,
 } from "./constants";
+import db from "../../../database/firestore";
 
-let env = require("../../../config/env");
+const refMstUser = db.collection('mst_user')
 
 // ========================== User general ==========================
 export function fetchUserGeneral(username) {
-    let url = env.API_URL + 'users/username/' + username;
     return dispatch => {
         dispatch(pendingFetchUserGeneralAction())
-        return get(dispatch, url, {}, {}, fetchUserGeneralAction)
+        return refMstUser.where('username', '==', username).limit(1).get().then(snapshot => {
+            let data = null;
+            snapshot.forEach(doc => {
+                data = {
+                    id: doc.id,
+                    ...doc.data(),
+                    balance: 0
+                }
+
+                return refMstUser.doc(doc.id).collection('transactions').get().then(snapshot_tran => {
+                    let balance = 0;
+                    snapshot_tran.forEach(doc_tran => {
+                        balance += parseInt(doc_tran.data().amount)
+                    })
+                    data.balance = balance;
+                }).finally(() => {
+                    dispatch(fetchUserGeneralAction(dispatch, {data: data}));
+                });
+            });
+        })
     }
 }
 
@@ -34,11 +52,25 @@ export function fetchUserGeneralAction(dispatch, data) {
 }
 
 //========================== User transactions ==========================
-export function fetchUserTransactions(username, config) {
-    let url = env.API_URL + 'users/' + username + '/transactions';
+export function fetchUserTransactions(username) {
     return dispatch => {
         dispatch(pendingFetchUserTransactionsAction())
-        return post(dispatch, url, {}, config, fetchUserTransactionAction)
+        return refMstUser.where('username', '==', username).limit(1).get().then(snapshot => {
+            snapshot.forEach(doc => {
+                let list = [];
+                return refMstUser.doc(doc.id).collection('transactions').get().then(snapshot_tran => {
+                    snapshot_tran.forEach(doc_tran => {
+                        let item = {
+                            id: doc_tran.id,
+                            ...doc_tran.data()
+                        }
+                        list.push(item);
+                    })
+                }).finally(() => {
+                    dispatch(fetchUserTransactionAction(dispatch, {data: list}));
+                });
+            });
+        })
     }
 }
 
@@ -57,11 +89,25 @@ export function fetchUserTransactionAction(dispatch, data) {
 }
 
 // ========================== User orders ==========================
-export function fetchUserOrders(username, config) {
-    let url = env.API_URL + 'users/' + username + '/orders';
+export function fetchUserOrders(username) {
     return dispatch => {
         dispatch(pendingFetchUserOrdersAction())
-        return post(dispatch, url, {}, config, fetchUserOrdersAction)
+        return refMstUser.where('username', '==', username).limit(1).get().then(snapshot => {
+            snapshot.forEach(doc => {
+                let list = [];
+                return refMstUser.doc(doc.id).collection('orders').get().then(snapshot_order => {
+                    snapshot_order.forEach(doc_order => {
+                        let item = {
+                            id: doc_order.id,
+                            ...doc_order.data()
+                        }
+                        list.push(item);
+                    })
+                }).finally(() => {
+                    dispatch(fetchUserOrdersAction(dispatch, {data: list}));
+                });
+            });
+        })
     }
 }
 

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "development") {
     const {createLogger} = require("redux-logger");
 
     const logger = createLogger({collapsed: true});
-    middlewares.push(logger);
+    //middlewares.push(logger);
 }
 
 function configureStore(initialState) {

@@ -8,7 +8,7 @@ class President extends Component {
             <div className="home-page-wrapper teams-wrapper">
                 <div className="home-teams">
                     <div className="title-wrapper">
-                        <h1><span>团队成员</span></h1>
+                        <h1><span>Member</span></h1>
                     </div>
                     <div className="member-wrapper">
                         <div className="ant-row block-wrapper">

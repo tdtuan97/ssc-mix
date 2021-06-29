@@ -34,7 +34,7 @@ class ListOrders extends Component {
                                              Amount:
                                             </span>
                                               <span className="item-data-value">
-                                                {item.amount}</span>
+                                                {item.amount.toLocaleString()} VND</span>
                                           </div>
                                           <div className="item-data">
                                             <span className="item-data-key">
